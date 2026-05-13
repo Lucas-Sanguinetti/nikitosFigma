@@ -1,7 +1,9 @@
 import React from "react";
-export default function Navbar() { 
+export default function FeaturedProducts() { 
 
-    const menuItems = ["home ", "productos ", "donde comprar ", "recetas ", "nosotros ", "contacto "]
+    /*aqui debe de usarse el backend */
+
+    const menuItems = ["P1 ", "P2 ", "P3 ", "P4"]
 
     function clickedSection(section: string) {
         console.log(`Clicked on ${section}`);
@@ -10,12 +12,17 @@ export default function Navbar() {
     return (
         <> 
             <div> 
-            icono 
+            Linea de productos
             </div> 
             <li>
                 {menuItems.map((item) => (
                     <a href={`#${item } `} key={item} onClick={() => clickedSection(item)}>
+                        imagen
+                        categoria
                         {item}
+                        <div>
+                            Ver Producto
+                        </div>
                     </a>
                 ))}
             </li>
@@ -23,5 +30,4 @@ export default function Navbar() {
         </>
     ); 
 } 
-    
     
