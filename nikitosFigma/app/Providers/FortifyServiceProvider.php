@@ -41,6 +41,7 @@ class FortifyServiceProvider extends ServiceProvider
     {
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
         Fortify::createUsersUsing(CreateNewUser::class);
+        Fortify::redirects('register', '/');
     }
 
     /**
@@ -68,7 +69,7 @@ class FortifyServiceProvider extends ServiceProvider
             'status' => $request->session()->get('status'),
         ]));
 
-        Fortify::registerView(fn () => Inertia::render('auth/register', [
+        Fortify::registerView(fn () => Inertia::render('register', [
             'passwordRules' => Password::defaults()->toPasswordRulesString(),
         ]));
 

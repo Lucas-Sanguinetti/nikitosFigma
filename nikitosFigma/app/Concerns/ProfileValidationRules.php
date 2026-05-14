@@ -17,6 +17,7 @@ trait ProfileValidationRules
     {
         return [
             'name' => $this->nameRules(),
+            'surname' => $this->surnameRules(),
             'email' => $this->emailRules($userId),
         ];
     }
@@ -29,6 +30,11 @@ trait ProfileValidationRules
     protected function nameRules(): array
     {
         return ['required', 'string', 'max:255'];
+    }
+
+    protected function surnameRules(): array
+    {
+    return ['required', 'string', 'max:255'];
     }
 
     /**

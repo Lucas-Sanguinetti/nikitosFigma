@@ -1,10 +1,10 @@
-import React from "react";
+import { Link } from '@inertiajs/react';
 export default function FeaturedProducts() { 
 
     /*aqui debe de usarse el backend */
 
     const menuItems = ["P1 ", "P2 ", "P3 ", "P4"]
-
+    const route = "productos/producto/1"
     function clickedSection(section: string) {
         console.log(`Clicked on ${section}`);
     }
@@ -12,18 +12,18 @@ export default function FeaturedProducts() {
     return (
         <> 
             <div> 
-            Linea de productos
+                Productos destacados
             </div> 
-            <li>
+            <li style={{ display: 'flex', gap: '24px', listStyle: 'none', margin: 0, padding: 0 }}>
                 {menuItems.map((item) => (
-                    <a href={`#${item } `} key={item} onClick={() => clickedSection(item)}>
+                    <Link href={route} key={item}>
                         imagen
                         categoria
                         {item}
                         <div>
                             Ver Producto
                         </div>
-                    </a>
+                    </Link>
                 ))}
             </li>
 

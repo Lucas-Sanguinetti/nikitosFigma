@@ -1,7 +1,16 @@
 import React from "react";
-export default function bottomPage() { 
+import { Link } from '@inertiajs/react';
+
+export default function BottomPage() { 
 
     const menuItems = ["home ", "productos ", "donde comprar ", "RSE ", "recetas ", "nosotros ", "contacto ", "Politicas de calidad"]
+    const menuItemsEnabled = [{name : "home", route: "/"},
+                              {name : "productos", route: "/productos"},
+                              {name : "donde comprar", route: "/donde-comprar"},
+                              {name : "recetas", route: "/recetas"},
+                              {name : "nosotros", route: "/nosotros"},
+                              {name : "contacto", route: "/contacto"}]
+
 
 
     function clickedSection(section: string) {
@@ -11,30 +20,52 @@ export default function bottomPage() {
     return (
        <>
        
-       <div>
+       <div style={{ display: 'flex', gap: '24px', listStyle: 'none', margin: 0, padding: 0 }}>
         <div>
-            logo, instagrama facebook
+            <Link href={"/"}> 
+                icono 
+            </Link>
+            <div>
+                instagrama facebook
+            </div> 
+            
         </div>
         <div>
             Secciones
-            <li>
-                {menuItems.map((item) => (
-                    <a href={`#${item } `} key={item} onClick={() => clickedSection(item)}>
-                        {item}
-                    </a>
-                ))}
-            </li>
+            <ul style={{ columns: 2, listStyle: 'none', padding: 0, margin: 0 }}>
+                    {menuItemsEnabled.map((item) => (
+                    <li key={item.route}>
+                        <Link href={item.route}>
+                            {item.name}
+                        </Link>
+                    </li>
+                 ))}
+            </ul>
         </div>
         <div>
-            Suscribete al Newsletter
-            /*falta el formulario de mail*/ 
+            <div>
+                Suscribete al Newsletter
+            </div>
+            <div>
+                /*falta el formulario de mail*/ 
+            </div>  
         </div>
         <div>
-            Contacto
-            Av. Otero 4550, Pontevedra, Provincia de Buenos Aires
-            +54 220 492-4752
-            ventas@nikitos.com.ar
-            Lunes a Viernes 9.00 a 17:30hs
+            <div>
+                Contacto
+            </div>
+            <div>
+                 Av. Otero 4550, Pontevedra, Provincia de Buenos Aires
+            </div>
+            <div>
+                +54 220 492-4752
+            </div>
+            <div>
+                ventas@nikitos.com.ar
+            </div>
+            <div>
+                Lunes a Viernes 9.00 a 17:30hs
+            </div>  
         </div>
        </div>
        

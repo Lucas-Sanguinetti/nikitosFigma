@@ -73,7 +73,7 @@ return [
     |
     */
 
-    'home' => '/dashboard',
+    'home' => '/',
 
     /*
     |--------------------------------------------------------------------------
@@ -152,6 +152,12 @@ return [
             'confirmPassword' => true,
             // 'window' => 0
         ]),
+    ],
+
+    
+    /*esto redirecciona del register a la pagina principal*/
+    'redirects' => [
+    'register' => '/',
     ],
 
 ];

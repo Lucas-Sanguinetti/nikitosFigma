@@ -1,7 +1,12 @@
 import React from "react";
+import { Link } from '@inertiajs/react';
+
+
 export default function productsTags() { 
 
     const menuItems = ["p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8", "p9", "p10"]
+    const tagsRoute = "/productos/producto/"
+    const itemid = 1
 
     function clickedSection(section: string) {
         console.log(`Clicked on ${section}`);
@@ -10,16 +15,15 @@ export default function productsTags() {
     return (
         <> 
             
-            <li>
+            <ul>
                 {menuItems.map((item) => (
-                    <a href={`#${item } `} key={item} onClick={() => clickedSection(item)}>
+                <li key={item}>
+                    <Link href={`${tagsRoute}${itemid}`}>
                         {item}
-                        <div>
-                            Ver Todos
-                        </div>
-                    </a>
+                    </Link>
+                </li>
                 ))}
-            </li>   
+            </ul>  
 
         </>
     ); 
