@@ -51,8 +51,8 @@ export default function Register({ passwordRules =  ''}: Props) {
                                     required
                                     autoFocus
                                     tabIndex={1}
-                                    autoComplete="name"
-                                    name="sur-name"
+                                    autoComplete="surname"
+                                    name="surname"
                                     placeholder="Apellido"
                                 />
                                 <InputError
