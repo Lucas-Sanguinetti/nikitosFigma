@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from '@inertiajs/react';
+import { category } from '@/types/category';
 
 
-export default function productsTags() { 
+export default function ProductTags({ categories }: { categories: category[] }) {
 
-    const menuItems = ["p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8", "p9", "p10"]
+    
     const tagsRoute = "/productos/producto/"
     const itemid = 1
 
@@ -12,14 +13,16 @@ export default function productsTags() {
         console.log(`Clicked on ${section}`);
     }
 
+    
+
     return (
         <> 
             
             <ul>
-                {menuItems.map((item) => (
-                <li key={item}>
-                    <Link href={`${tagsRoute}${itemid}`}>
-                        {item}
+                {categories.map((category) => (
+                <li key={category.id}>
+                    <Link href={`${tagsRoute}${category.id}`}>
+                        {category.nombre}
                     </Link>
                 </li>
                 ))}

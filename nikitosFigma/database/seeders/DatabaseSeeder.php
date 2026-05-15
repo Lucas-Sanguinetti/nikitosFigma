@@ -1,6 +1,9 @@
 <?php
 
 namespace Database\Seeders;
+use Database\Seeders\CategorySeeder;
+use Database\Seeders\ProductSeeder;
+use Database\Seeders\ProductImageSeeder;
 
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -18,6 +21,15 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
+        ]);
+
+        $this->call([
+            CategorySeeder::class,
+            ProductSeeder::class,
+            ProductImageSeeder::class,
+            RecipeSeeder::class,
+            PasoSeeder::class,
+            IngredienteSeeder::class,
         ]);
     }
 }

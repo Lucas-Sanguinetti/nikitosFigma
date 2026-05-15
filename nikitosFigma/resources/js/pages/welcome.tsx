@@ -1,19 +1,30 @@
 import { Head, Link, usePage } from '@inertiajs/react';
-import { login, register } from '@/routes';
-import banner from '@/components/banner';
-import aboutUs from '@/components/aboutUs';
-import productsList from '@/components/productsList';
-import featuredProducts from '@/components/featuredProducts';
-import recipes from '@/components/recipes';
-import bottomPage from '@/components/bottomPage';
+import { category } from '@/types/category';
+import { product } from '@/types/product';
+import { recipe } from '@/types/recipe';
+import ProductsList from '@/components/productsList';
+import FeaturedProducts from '@/components/featuredProducts';
+import Recipes from '@/components/recipes';
+import BottomPage from '@/components/bottomPage';
 import Navbar from '@/components/navbar';
+import Banner from '@/components/banner';
+import AboutUs from '@/components/aboutUs';
 
 export default function Welcome({
+    categories = [],
+    featuredCategories = [],
+    products= [],
     canRegister = true,
+    recipes = []
 }: {
+    categories: category[];
+    featuredCategories: category[];
+    products: product[];
     canRegister?: boolean;
+    recipes?: recipe[];
 }) {
     const { auth } = usePage().props;
+    
 
     return (
         <>
@@ -22,19 +33,19 @@ export default function Welcome({
                 <Navbar /> 
         </div>
        
-        <div className="pt-20 overflow-y-auto h-screen">
+        <div className="pt-20">
 
-                {banner()}
+                <Banner />
 
-                {aboutUs()}
+                <AboutUs />
 
-                {productsList()}
+                <ProductsList categories={categories} />
 
-                {featuredProducts()}
+                <FeaturedProducts products={products} />
 
-                {recipes()}
+                <Recipes recipes={recipes} />
 
-                {bottomPage()}
+                <BottomPage />
 
         </div>
 

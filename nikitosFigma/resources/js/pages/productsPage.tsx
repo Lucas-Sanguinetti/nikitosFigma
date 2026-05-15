@@ -1,12 +1,15 @@
 import { Head, Link, usePage } from '@inertiajs/react';
 import { login, register } from '@/routes';
-import navbar from '@/components/navbar';
-import productTags from '@/components/productsTags';
-import bottomPage from '@/components/bottomPage';
+import ProductTags from '@/components/productsTags';
+import { category } from '@/types/category';
+import BottomPage from '@/components/bottomPage';
+import Navbar from '@/components/navbar';
 
 export default function ProductsPage({
+    categories,
     canRegister = true,
 }: {
+    categories : category[]
     canRegister?: boolean;
 }) {
     
@@ -16,7 +19,7 @@ export default function ProductsPage({
         <>
 
             <div className="fixed top-0 left-0 w-full z-50">
-                {navbar()} 
+                <Navbar /> 
             </div>
 
             <div>
@@ -25,11 +28,11 @@ export default function ProductsPage({
        
             <div className="pt-20 overflow-y-auto h-screen">
 
-                {productTags()}
+                <ProductTags categories={categories} />
 
             </div>
 
-            {bottomPage()}
+            <BottomPage />
 
         </>
     );

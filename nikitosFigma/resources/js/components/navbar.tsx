@@ -40,7 +40,7 @@ export default function Navbar() {
         <> 
             <div style={{ display: 'flex', gap: '24px', listStyle: 'none', margin: 0, padding: 0 }}>
                 <Link href={"/"}> 
-                    icono 
+                    <img src="/images/logo.png" alt="Logo" style={{ height: '40px' }} />
                 </Link> 
                 <ul style={{ display: 'flex', gap: '24px', listStyle: 'none', margin: 0, padding: 0 }}>
                     {menuItemsEnabled.map((item) => (

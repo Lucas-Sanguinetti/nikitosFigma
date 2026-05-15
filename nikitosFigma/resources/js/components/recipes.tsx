@@ -1,9 +1,9 @@
+import { recipe } from "@/types/recipe";
 import React from "react";
-export default function Recipes() { 
 
-    /*aqui debe de usarse el backend */
+export default function Recipes({ recipes }: { recipes: recipe[] }) { 
 
-    const menuItems = ["r1 ", "r2 ", "r3 "]
+
     const route = "recetas/receta/1"
 
     function clickedSection(section: string) {
@@ -16,10 +16,10 @@ export default function Recipes() {
             Recetas
             </div> 
             <li style={{ display: 'flex', gap: '24px', listStyle: 'none', margin: 0, padding: 0 }}>
-                {menuItems.map((item) => (
-                    <a href={route} key={item} onClick={() => clickedSection(item)}>
-                        imagen
-                        {item}
+                {recipes.map((recipe) => (
+                    <a href={route} key={recipe.id} onClick={() => clickedSection(recipe.nombre)}>
+                        <img src={recipe.imagen} alt={recipe.nombre} />
+                        {recipe.nombre}
                         <div>
                             Ver receta
                         </div>

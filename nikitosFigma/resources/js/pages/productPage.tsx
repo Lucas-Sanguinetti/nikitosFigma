@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { Head, Link, usePage } from '@inertiajs/react';
 import navbar from '@/components/navbar';
 import bottomPage from '@/components/bottomPage';
-import { producto } from '@/routes';
+import { category } from '@/types/category';
+import { product } from '@/types/product';
 
-// Definimos el tipo del producto para que TypeScript esté contento
-// Ajustá las propiedades según lo que te venga del backend
+
 type Producto = {
     id: number;
     nombre: string;
@@ -13,43 +13,31 @@ type Producto = {
     tagId: string;
 };
 
-export default function Welcome({
+export default function productPage({
     id,
     canRegister = true,
-    productos, // productos vendrá del backend eventualmente
+    categories,
+    products,
 }: {
     id: number;
     canRegister?: boolean;
-    productos?: Producto[];
+    categories: category[];
+    products: product[];
 }) {
     const { auth } = usePage().props;
-    const tags = ["salados", "dulces", "jugos", "cereales", "pochoclos", "palitos", "pizzitos", "maikitos"];
 
 
-    const [tagActivo, setTagActivo] = useState<string>(tags[0]);
+    const [tagActivo, setTagActivo] = useState<number>(
+        categories?.[0]?.id ?? 0
+    );
 
-    const [productoSeleccionado, setProductoSeleccionado] = useState<Producto | null>(null);
-
-    const productosMock: Producto[] = [
-    { id: 1, nombre: "Palitos de queso", imagen: "https://placehold.co/300x200", tagId: "palitos" },
-    { id: 2, nombre: "Palitos de sal", imagen: "https://placehold.co/300x200", tagId: "palitos" },
-    { id: 3, nombre: "Pochoclo dulce", imagen: "https://placehold.co/300x200", tagId: "pochoclos" },
-    { id: 4, nombre: "Pochoclo salado", imagen: "https://placehold.co/300x200", tagId: "pochoclos" },
-    { id: 5, nombre: "Jugo de naranja", imagen: "https://placehold.co/300x200", tagId: "jugos" },
-    { id: 6, nombre: "Jugo de manzana", imagen: "https://placehold.co/300x200", tagId: "jugos" },
-    { id: 7, nombre: "Cereal de miel", imagen: "https://placehold.co/300x200", tagId: "cereales" },
-    { id: 8, nombre: "Pizzito clasico", imagen: "https://placehold.co/300x200", tagId: "pizzitos" },
-    { id: 9, nombre: "Maikito original", imagen: "https://placehold.co/300x200", tagId: "maikitos" },
-    { id: 10, nombre: "Alfajor de chocolate", imagen: "https://placehold.co/300x200", tagId: "dulces" },
-    { id: 11, nombre: "Tostado salado", imagen: "https://placehold.co/300x200", tagId: "salados" },
-    
-    ];
+    const [productoSeleccionado, setProductoSeleccionado] = useState<product | null>(null);
 
     
 
-    const productosFiltrados = productosMock.filter(p => p.tagId === tagActivo);
+    const productosFiltrados = products?.filter(p => p.category_id === tagActivo) ?? [];
 
-    function clickedTag(tag: string) {
+    function clickedTag(tag: number) {
         setTagActivo(tag);
         setProductoSeleccionado(null);
     }
@@ -68,13 +56,13 @@ export default function Welcome({
 
                 <div>
                     <ul>
-                        {tags.map((tag) => (
+                        {categories.map((category) => (
                             <a
-                            key={tag}
-                            onClick={() => clickedTag(tag)}
-                            style={{ fontWeight: tag === tagActivo ? 'bold' : 'normal' }}
+                            key={category.id}
+                            onClick={() => clickedTag(category.id)}
+                            style={{ fontWeight: category.id === tagActivo ? 'bold' : 'normal' }}
                             >
-                                {tag}
+                                {category.nombre}
                             </a>
                             ))}
                     </ul>
@@ -86,7 +74,7 @@ export default function Welcome({
                                 ← Volver a {tagActivo}
                             </button>
                             <h2>{productoSeleccionado.nombre}</h2>
-                            <img src={productoSeleccionado.imagen} alt={productoSeleccionado.nombre} />
+                            <img src={productoSeleccionado.images[0].ruta} alt={productoSeleccionado.nombre} />
                         </div>
                     ) : (
                         <div>
@@ -96,7 +84,7 @@ export default function Welcome({
                                     onClick={() => setProductoSeleccionado(producto)}
                                     style={{ cursor: 'pointer' }}
                                 >
-                                    <img src={producto.imagen} alt={producto.nombre} />
+                                    <img src={`/${producto.images[0].ruta}`} alt={producto.nombre} />
                                     <p>{producto.nombre}</p>
                                     <button>Ver producto</button>
                                 </div>

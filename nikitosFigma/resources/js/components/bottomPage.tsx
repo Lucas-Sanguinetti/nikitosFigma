@@ -19,11 +19,11 @@ export default function BottomPage() {
 
     return (
        <>
-       
+        <img src="images/fondoBottom.png" alt="Logo" style={{ height: '40px' }} />
        <div style={{ display: 'flex', gap: '24px', listStyle: 'none', margin: 0, padding: 0 }}>
         <div>
             <Link href={"/"}> 
-                icono 
+                <img src="/images/logo.png" alt="Logo" style={{ height: '40px' }} />
             </Link>
             <div>
                 instagrama facebook

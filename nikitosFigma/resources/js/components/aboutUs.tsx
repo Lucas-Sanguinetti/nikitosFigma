@@ -20,7 +20,7 @@ export default function AboutUs() {
                     presencia de venta en todo el país y atención de excelencia.
                 </div>
                 <div>
-                    imagen de papas fritas
+                    <img src="images/papasIncio.png" alt="Logo" style={{ height: '40px' }} />
                 </div>
             </div>
             

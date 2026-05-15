@@ -1,13 +1,16 @@
 import { Link } from '@inertiajs/react';
-export default function ProductsList() { 
+import { category } from '@/types/category';
+export default function ProductsList({categories} : { categories: category[] }) { 
 
     /*aqui debe de usarse el backend */
 
-    const menuItems = ["Tradicional Escolar ", "Juvenil Mentalizada ", "Lineaa Max ", "Premiun Max 120g "]
+    
     const route = "productos/producto/1"
     function clickedSection(section: string) {
         console.log(`Clicked on ${section}`);
     }
+    console.log(categories);
+    
 
     return (
         <> 
@@ -15,10 +18,12 @@ export default function ProductsList() {
             Linea de productos
             </div> 
                 <ul style={{ display: 'flex', gap: '24px', listStyle: 'none', margin: 0, padding: 0 }}>
-                    {menuItems.map((item) => (
-                    <li key={item}>
+                    {categories.map((category) => (
+                    <li key={category.id} style={{
+                        border: `3px solid ${category.color}`}}>
                         <Link href={route}>
-                            {item}
+                            <img src={`/${category.imagen}`} alt={category.nombre} style={{ width: '100px', height: '100px' }} />
+                            {category.nombre}
                         </Link>
                     </li>
                     ))}
