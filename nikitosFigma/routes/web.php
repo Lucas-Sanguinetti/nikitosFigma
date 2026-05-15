@@ -94,4 +94,15 @@ Route::get('/productos/producto/{id}', function ($id) {
 })->whereNumber('id')->name('producto');
 
 
+Route::get('/recetas', function () {
+
+    $recipes = Recipe::all();
+
+    return Inertia::render('recipesPage', [
+        'recipes' => $recipes,
+        'canRegister' => Features::enabled(Features::registration()),
+    ]);
+});
+
+
 require __DIR__.'/settings.php';

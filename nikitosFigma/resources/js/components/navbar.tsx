@@ -77,7 +77,7 @@ export default function Navbar() {
                                 placeholder="Email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
-                                style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
+                                style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc', color: '#000' }}
                             />
                             {errors?.email && <p style={{ color: 'red', margin: 0 }}>{errors.email}</p>}
 
@@ -86,7 +86,7 @@ export default function Navbar() {
                                 placeholder="Contraseña"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
-                                style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
+                                style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc', color: '#000' }}
                             />
                             {errors?.password && <p style={{ color: 'red', margin: 0 }}>{errors.password}</p>}
 
@@ -97,9 +97,6 @@ export default function Navbar() {
                                 Entrar
                             </button>
 
-                            <Link href={"/registro"} style={{ marginLeft: '16px' , color: '#000000'}}>
-                                ¿No tienes cuenta? Registrarse
-                            </Link>
 
                         </div>
                     )}

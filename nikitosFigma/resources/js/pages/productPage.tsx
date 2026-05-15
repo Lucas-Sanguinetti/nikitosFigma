@@ -70,11 +70,8 @@ export default function productPage({
 
                     {productoSeleccionado ? (
                         <div>
-                            <button onClick={() => setProductoSeleccionado(null)}>
-                                ← Volver a {tagActivo}
-                            </button>
                             <h2>{productoSeleccionado.nombre}</h2>
-                            <img src={productoSeleccionado.images[0].ruta} alt={productoSeleccionado.nombre} />
+                            <img src={`/${productoSeleccionado.images[0].ruta}`} alt={productoSeleccionado.nombre} />
                         </div>
                     ) : (
                         <div>

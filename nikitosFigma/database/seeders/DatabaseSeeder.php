@@ -4,6 +4,7 @@ namespace Database\Seeders;
 use Database\Seeders\CategorySeeder;
 use Database\Seeders\ProductSeeder;
 use Database\Seeders\ProductImageSeeder;
+use Database\Seeders\UserSeeder;
 
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -30,6 +31,7 @@ class DatabaseSeeder extends Seeder
             RecipeSeeder::class,
             PasoSeeder::class,
             IngredienteSeeder::class,
+            UserSeeder::class,
         ]);
     }
 }
